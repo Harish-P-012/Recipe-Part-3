@@ -1,6 +1,4 @@
-// -----------------------------
-// RECIPE DATA (Part 1)
-// -----------------------------
+
 const recipes = [
     { title: "Pasta Alfredo", difficulty: "easy", time: 20 },
     { title: "Chicken Curry", difficulty: "medium", time: 45 },
@@ -13,24 +11,18 @@ const recipes = [
 ];
 
 
-// -----------------------------
-// STATE VARIABLES
-// -----------------------------
+
 let currentFilter = "all";
 let currentSort = "none";
 
 
-// -----------------------------
-// DOM REFERENCES
-// -----------------------------
+
 const recipeContainer = document.getElementById("recipe-container");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const sortButtons = document.querySelectorAll(".sort-btn");
 
 
-// -----------------------------
-// PURE FILTER FUNCTIONS
-// -----------------------------
+
 const filterByDifficulty = (recipes, filter) => {
     if (filter === "all") return recipes;
     if (filter === "quick") return recipes.filter(r => r.time < 30);
@@ -39,9 +31,7 @@ const filterByDifficulty = (recipes, filter) => {
 };
 
 
-// -----------------------------
-// PURE SORT FUNCTIONS
-// -----------------------------
+
 const sortByName = (recipes) => {
     return [...recipes].sort((a, b) => a.title.localeCompare(b.title));
 };
@@ -51,17 +41,13 @@ const sortByTime = (recipes) => {
 };
 
 
-// -----------------------------
-// APPLY FILTER
-// -----------------------------
+
 const applyFilter = (recipes, filterType) => {
     return filterByDifficulty(recipes, filterType);
 };
 
 
-// -----------------------------
-// APPLY SORT
-// -----------------------------
+
 const applySort = (recipes, sortType) => {
     switch (sortType) {
         case "name":
@@ -74,9 +60,7 @@ const applySort = (recipes, sortType) => {
 };
 
 
-// -----------------------------
-// RENDER FUNCTION
-// -----------------------------
+
 const renderRecipes = (recipesToShow) => {
     recipeContainer.innerHTML = "";
 
@@ -95,9 +79,7 @@ const renderRecipes = (recipesToShow) => {
 };
 
 
-// -----------------------------
-// UPDATE ACTIVE BUTTON UI
-// -----------------------------
+
 const updateButtonStates = () => {
     filterButtons.forEach(btn => {
         btn.classList.toggle("active", btn.dataset.filter === currentFilter);
@@ -109,9 +91,7 @@ const updateButtonStates = () => {
 };
 
 
-// -----------------------------
-// MAIN UPDATE FUNCTION
-// -----------------------------
+
 const updateDisplay = () => {
     let result = recipes;
 
@@ -124,9 +104,7 @@ const updateDisplay = () => {
 };
 
 
-// -----------------------------
-// EVENT LISTENERS
-// -----------------------------
+
 filterButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         currentFilter = btn.dataset.filter;
@@ -144,8 +122,7 @@ sortButtons.forEach(btn => {
 });
 
 
-// -----------------------------
-// INITIAL LOAD
-// -----------------------------
+
 updateDisplay();
 updateButtonStates();
+
